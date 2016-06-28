@@ -1,0 +1,10 @@
+<h1>ITS WORKING</h1>
+
+<h3>PROJECTS</h3>
+<ul>
+  <li ng-repeat="project in projects">{{project.projectName}}
+    <ul>
+      <li ng-repeat="task in project.tasks">{{task}}</li>
+    </ul>
+  </li>
+</ul>
