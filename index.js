@@ -25,6 +25,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -36,10 +37,12 @@ passport.deserializeUser(function(obj, done) {
 
 var requireAuth = function(req, res, next) {
     if (req.isAuthenticated()) {
+      console.log('USER IS AUTHENTICATED')
       return next();
     }
-    return res.redirect('/#/login');
-  }
+    console.log('USER IS NOT AUTHENTICATED')
+    return res.send({redirect: '/#/login'})
+}
 
 passport.use(new GitHubStrategy({
   clientID: '6c808f44be286cc277b0',
@@ -56,7 +59,7 @@ app.get('/auth/github/callback', passport.authenticate('github', {
 }))
 
 app.post('/api/projects', projectCtrl.addProject);
-app.get('/api/projects', projectCtrl.getProjects);
+app.get('/api/projects', requireAuth, projectCtrl.getProjects);
 app.get('/api/projects/:id', projectCtrl.getProjectById);
 app.delete('/api/projects/:id', projectCtrl.deleteProjectById);
 app.put('/api/projects/:id', projectCtrl.updateProjectById);

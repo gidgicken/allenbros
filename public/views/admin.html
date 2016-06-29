@@ -1,10 +1,24 @@
-<h1>ITS WORKING</h1>
-
 <h3>PROJECTS</h3>
 <ul>
   <li ng-repeat="project in projects">{{project.projectName}}
+    <input ng-model="newTask" placeholder="New Task...">
+    <button ng-click="addTask(project._id, newTask)" type="button" name="button">Add Task</button>
     <ul>
-      <li ng-repeat="task in project.tasks">{{task}}</li>
+      <li ng-repeat="task in project.tasks">{{task.text}}</li>
     </ul>
   </li>
 </ul>
+
+<h2>Add a Project</h2>
+<input ng-model="contactName" placeholder="Contact Name">
+<input ng-model="contactEmail" placeholder="Contact Email">
+<input ng-model="contactPhone" placeholder="Contact Phone">
+<input ng-model="contactRole" placeholder="Contact Role">
+<input ng-model="company" placeholder="Company Name">
+<input ng-model="companyURLs" placeholder="Company URLs">
+<input ng-model="projectDescription" placeholder="Project Description">
+<input ng-model="goalDate" placeholder="Goal Date">
+
+<input ng-model="projectName" placeholder="Project Name">
+
+<button ng-click="addProject(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate, projectName)" type="button" name="button">Add It!</button>

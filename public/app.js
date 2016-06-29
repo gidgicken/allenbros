@@ -14,6 +14,16 @@ angular.module('app', ['ui.router'])
       }
     }
   })
+  .state('login', {
+    url: '/login',
+    templateUrl: './views/login.html',
+    controller: 'loginCtrl'
+  })
+  .state('main', {
+    url: '/',
+    templateUrl: './views/main.html',
+    controller: 'mainCtrl'
+  })
 
 
 })
