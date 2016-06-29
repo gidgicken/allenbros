@@ -8,4 +8,7 @@ angular.module('app').controller('mainCtrl', function($scope){
     ]
     return motivationalPhrases[Math.random() * (motivationalPhrases.length)];
   }
+  window.sr = ScrollReveal({ duration: 2000, distance: '200px', scale: .6, viewFactor: 1 });
+  sr.reveal('.knowledge-logo', 500);
+  sr.reveal('.connecting-line', 500);
 })

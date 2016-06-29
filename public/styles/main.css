@@ -308,9 +308,45 @@ a:hover {
   background: grey;
   border: 8px outset #FFE300;
   /*border-style: groove;*/
+  position: relative;
   -moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
+}
+.who-we-are-image:hover .yellow-image-overlay {
+  opacity: .6;
+}
+.yellow-image-overlay {
+  height: 100%;
+  width: 100%;
+  background: #FFE300;
+  -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+.github-logo {
+  height: 50px;
+  width: 50px;
+  background: url('../img/github-logo.png');
+  background-size: cover;
+}
+.linkedin-logo {
+  height: 50px;
+  width: 50px;
+  background: url('../img/linkedin-logo.png');
+  background-size: cover;
+}
+.logo:hover {
+  cursor: pointer;
 }
 #jordan-pic {
   background: url('../img/jordan-pic.jpg');
@@ -342,8 +378,40 @@ a:hover {
   font-size: 24px;
 }
 
-
-
+.what-we-can-do-section {
+  height: 100vh;
+  width: 106%;
+  margin-top: -3vh;
+  margin-left: -5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Merriweather', 'sans-serif';
+  padding-top: 50px;
+}
+.what-we-can-do-header {
+  padding-top: 30px;
+  font-weight: 400;
+  font-size: 18px;
+  border-top: 1px solid grey;
+  margin-bottom: 40px;
+}
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70vw;
+}
+.knowledge-logo{
+  height:200px;
+  width: 200px;
+  margin: 30px 30px;
+}
+.knowledge-logo img {
+  height: 100%;
+  width:100%;
+}
 
 @-moz-keyframes dropHeader {
     0% {
