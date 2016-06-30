@@ -2,20 +2,51 @@
   <div class="ab-logo">
     <img src="../img/AllenBrothersLogoTransparent.png" alt="" />
   </div>
-  <div class="main-menu-button">
+  <div class="main-menu-button" ng-click="toggleMenu()">
     <div class="hamburger-line" id="hamburger-line-one"></div>
     <div class="hamburger-line" id="hamburger-line-two"></div>
     <div class="hamburger-line" id="hamburger-line-three"></div>
   </div>
+  <div id="main-menu">
+    <div class="main-menu-tab">
+        <h4>01 HOME</h4>
+        <h2>Home</h2>
+        <p>Return to the homepage</p>
+    </div>
+    <div class="main-menu-tab">
+        <h4>02 WHY</h4>
+        <h2>Why AllenBros?</h2>
+        <p>How are the AllenBros unique?</p>
+    </div>
+    <div class="main-menu-tab">
+        <h4>03 WHO</h4>
+        <h2>Who are we?</h2>
+        <p>Learn more about the minds behind AllenBros</p>
+    </div>
+    <div class="main-menu-tab">
+        <h4>04 WHAT</h4>
+        <h2>What do we do?</h2>
+        <p>What kinds of skills do the AllenBros have?</p>
+    </div>
+    <div class="main-menu-tab" href="#contact-us-section">
+        <h4>05 HOW</h4>
+        <h2>Work with us</h2>
+        <p>Submit your project to the AllenBros</p>
+    </div>
+  </div>
 </div>
 
+<!-- <div id="main-menu">
+
+</div> -->
+<div class="sections">
 
 
 <div class="main-jumbo">
   <div class="jumbo-content">
     <h1 class="jumbo-content-header">Leveraging <strong>technology</strong> to bring ideas to <strong>life</strong></h1>
     <div class="yellow-line-divider"><div class="tiny-yellow-circle"></div></div>
-    <div class="sub-content"><h2 class="jumbo-content-subheader"><span style="color: grey">Make it </span>happen</h2><div class="typing-bar"></div></div>
+    <div class="sub-content"><h2 class="jumbo-content-subheader"><span style="color: #a3a3c2">Make it </span>happen</h2><div class="typing-bar"></div></div>
   </div>
 </div>
 
@@ -23,7 +54,7 @@
 <div class="why-us-section">
   <div class="connecting-line"></div>
   <h2 class="why-us-header">WHY WORK WITH ALLENBROS?</h2>
-  <h2 class="why-us-content">AllenBros was founded <strong>by</strong> students <strong>for</strong> students.</h3>
+  <h2 class="why-us-content">AllenBros was founded <strong><span id="by">by</span></strong> students <strong><span id="for">for</span></strong> students.</h3>
   <h4 class="why-us-subcontent">Work with individuals who are <strong>familiar</strong> with your <strong>concerns</strong> &amp; <strong>budget constraints</strong></h4>
   <a class="black-email-link" href="#">Chat with one of the Allen Brothers  ></a>
 </div>
@@ -39,7 +70,7 @@
         <div class="linkedin-logo logo" ng-href="https://www.linkedin.com/in/caleb-allen-6205108a"></div>
       </div>
     </div>
-    <div class="who-we-are-content">
+    <div class="who-we-are-content" id="caleb-info">
       <h3>Caleb Allen</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -47,7 +78,7 @@
     </div>
   </div>
   <div class="who-we-are-row">
-    <div class="who-we-are-content">
+    <div class="who-we-are-content" id="jordan-info">
       <h3>Jordan Allen</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -66,27 +97,59 @@
 
 <div class="what-we-can-do-section">
   <h2 class="what-we-can-do-header">WHAT CAN WE DO?</h2>
-  <div class="logos-grid">
-    <div class="knowledge-logo"><img src="https://avatars0.githubusercontent.com/u/139426?v=3&s=400" alt="" /></div>
-    <div class="knowledge-logo"><img src="http://precision-software.com/wp-content/uploads/2014/04/jQurery.gif" alt="" /></div>
-    <div class="knowledge-logo"><img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="http://bradsknutson.com/wp-content/themes/bradsknutson/images/css3.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="http://www.unixstickers.com/image/data/stickers/react/badge/React-JS.sh.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="http://code-maven.com/img/node.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="https://raw.githubusercontent.com/ServiceStack/Assets/master/img/livedemos/techstacks/django-logo.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="https://www.virtzone.net/wp-content/uploads/2015/11/mysql-logo.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="http://www.unixstickers.com/image/cache/data/stickers/C/C++-unofficial.sh-600x600.png" alt="" /></div>
-    <div class="knowledge-logo"><img src="https://upload.wikimedia.org/wikipedia/en/8/88/Java_logo.png" alt="" /></div>
-
+  <div class="what-we-can-do-content">
+    <div class="what-we-can-do-paragraph">
+      <h2>AllenBros has the <strong>know-how</strong> to make your web/mobile app <strong><span id="come-to-life">come to life</span></strong></h2>
+      <ul>
+        <li>-Websites-</li>
+        <li>-Web Apps-</li>
+        <li>-Android Apps-</li>
+        <li>-iOS Apps (coming soon)-</li>
+      </ul>
+    </div>
+    <!-- <div class="logos-grid">
+      <div class="knowledge-logo" id="angular-logo"><img src="https://avatars0.githubusercontent.com/u/139426?v=3&s=400" alt="" /></div>
+      <div class="knowledge-logo" id="jquery-logo"><img src="http://www.ianhoar.com/wp-content/uploads/2011/06/jquery_logo.png" alt="" /></div>
+      <div class="knowledge-logo" id="html5-logo"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="" /></div>
+      <div class="knowledge-logo" id="css3-logo"><img src="http://www.unixstickers.com/image/data/stickers/css3/css3_unofficial_shaped.png" alt="" /></div>
+      <div class="knowledge-logo" id="react-logo"><img src="https://cdn.auth0.com/blog/react-js/react.png" alt="" /></div>
+      <div class="knowledge-logo" id="node-logo"><img src="https://strongloop.com/wp-content/uploads/2015/12/nodejs-logo.png" alt="" /></div>
+      <div class="knowledge-logo" id="mysql-logo"><img src="https://www.virtzone.net/wp-content/uploads/2015/11/mysql-logo.png" alt="" /></div>
+      <div class="knowledge-logo" id="python-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png" alt="" /></div>
+      <div class="knowledge-logo" id="cplusplus-logo"><img src="http://www.unixstickers.com/image/cache/data/stickers/C/C++-unofficial.sh-600x600.png" alt="" /></div>
+      <div class="knowledge-logo" id="java-logo"><img src="http://logodatabases.com/wp-content/uploads/2012/03/java-logo-large.png" alt="" /></div>
+      <div class="knowledge-logo" id="javascript-logo"><img src="http://mirna.majstorovic.net/assets/images/logos/logo-javascript.png" alt="" /></div>
+      <div class="knowledge-logo" id="postgresql-logo"><img src="https://wiki.postgresql.org/images/3/30/PostgreSQL_logo.3colors.120x120.png" alt="" /></div>
+      <div class="knowledge-logo" id="mongo-logo"><img src="https://res.cloudinary.com/dyyck73ly/image/upload/v1449113031/rlyy6zhctxs8kai7ihch.png" alt="" /></div>
+      <div class="knowledge-logo" id="websocket-logo"><img src="http://matzew.github.io/websockets/assets/img/connectivity.png" alt="" /></div>
+    </div> -->
   </div>
 </div>
 
+<div class="contact-us-section">
+  <h2 class="who-we-are-header" id="contact-us-section">TALK TO US!</h2>
+  <div class="contact-us-columns">
+    <div class="contact-us-left-column">
+      <h2 class="contact-us-paragraph">We'd love to discuss your project! <br><br><a id="click-here">Click here</a> to get started</h2>
+    </div>
+    <div class="contact-us-divider"></div>
+    <div class="contact-us-right-column">
+      <h4>CALEB</h4>
+      <p>caleb.e.allen@gmail.com</p>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <h4>JORDAN</h4>
+      <p>doydle@gmail.com</p>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+</div>
 
-
+</div>
 
 <div class="main-footer">
-  <div class="yellow-square-button">
+  <div class="yellow-square-button" ui-sref="questionnaire">
     <p>
       Work with us
     </p>

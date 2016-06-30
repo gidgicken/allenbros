@@ -1,4 +1,10 @@
 angular.module('app').service('projectService', function($http){
+
+  this.newSubmission = function(){
+    
+  }
+
+
   this.getProjects = function(){
     return $http({
       method: "GET",

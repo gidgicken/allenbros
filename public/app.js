@@ -24,6 +24,11 @@ angular.module('app', ['ui.router'])
     templateUrl: './views/main.html',
     controller: 'mainCtrl'
   })
+  .state('questionnaire', {
+    url: '/questionnaire',
+    templateUrl: './views/questionnaire.html',
+    controller: 'questionnaireCtrl'
+  })
 
 
 })
