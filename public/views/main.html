@@ -8,27 +8,27 @@
     <div class="hamburger-line" id="hamburger-line-three"></div>
   </div>
   <div id="main-menu">
-    <div class="main-menu-tab">
+    <div class="main-menu-tab" ng-click="jumpToHome(); toggleMenu()">
         <h4>01 HOME</h4>
         <h2>Home</h2>
         <p>Return to the homepage</p>
     </div>
-    <div class="main-menu-tab">
+    <div class="main-menu-tab" ng-click="jumpToWhy(); toggleMenu()">
         <h4>02 WHY</h4>
         <h2>Why AllenBros?</h2>
         <p>How are the AllenBros unique?</p>
     </div>
-    <div class="main-menu-tab">
+    <div class="main-menu-tab" ng-click="jumpToWho(); toggleMenu()">
         <h4>03 WHO</h4>
         <h2>Who are we?</h2>
         <p>Learn more about the minds behind AllenBros</p>
     </div>
-    <div class="main-menu-tab">
+    <div class="main-menu-tab" ng-click="jumpToWhat(); toggleMenu()">
         <h4>04 WHAT</h4>
         <h2>What do we do?</h2>
         <p>What kinds of skills do the AllenBros have?</p>
     </div>
-    <div class="main-menu-tab" href="#contact-us-section">
+    <div class="main-menu-tab" ng-click="jumpToHow(); toggleMenu()">
         <h4>05 HOW</h4>
         <h2>Work with us</h2>
         <p>Submit your project to the AllenBros</p>
@@ -39,7 +39,7 @@
 <!-- <div id="main-menu">
 
 </div> -->
-<div class="sections">
+<div class="sections" ng-click="clickedPage()">
 
 
 <div class="main-jumbo">

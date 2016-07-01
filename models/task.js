@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var taskSchema = new Schema({
-  assignedTo: { type: String },
+  assignedTo: { type: String, default: "unassigned" },
   dateCreated: { type: Date, default: Date.now },
   status: {
     type: String,

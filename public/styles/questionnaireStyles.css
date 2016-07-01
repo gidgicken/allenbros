@@ -1,12 +1,13 @@
 input[type=text] {
   width: 50vw;
-  border-bottom: 2px dashed white;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  /*border-bottom: 2px dashed white;*/
+  /*border-top: none;*/
+  /*border-right: none;*/
+  /*border-left: none;*/
+  border: none;
   background: none;
   padding: 15px 10px;
-  color: white;
+  color: grey;
   font-family: 'Merriweather', sans-serif;
   letter-spacing: 3px;
   font-size: 20px;
@@ -14,6 +15,18 @@ input[type=text] {
 }
 input:focus{
   outline: none;
+  color: white;
+}
+input[type=date]{
+  background: none;
+  width: 25vw;
+  font-size: 16px;
+  font-family: 'Merriweather', sans-serif;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  letter-spacing: 2px;
+  font-weight: 300;
 }
 
 .questionnaire {
@@ -23,11 +36,11 @@ input:focus{
   background-attachment: fixed;
   margin-left: -5vw;
   margin-top: -5vh;
-  height: 305vh;
+  height: 240vh;
   width: 106vw;
   color: white;
   font-family: 'Merriweather', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +54,7 @@ input:focus{
 }
 .question {
   width: 50vw;
-  height: 25vh;
+  height: 15vh;
   margin: 3vh 0 3vh 0;
 }
 #questionnaire-top {
@@ -54,6 +67,7 @@ input:focus{
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
   border: 3px solid white;
   height: 70px;
   width: 200px;

@@ -6,16 +6,21 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 module.exports = {
+
   addProject: function(req, res, next){
     var newProject = new Project(req.body.information);
     newProject.tasks = [];
     var projectQuestionnaire = new Questionnaire(req.body.questionnaire);
     projectQuestionnaire.save(function(err){
-      if(err) res.status(500).json(err);
+      console.log('1');
+      if(err) return res.status(500).json(err);
     })
     newProject.projectQuestionnaire = projectQuestionnaire._id;
     newProject.save(function(err, s){
-      return err ? res.status(500).json(err) : res.json(s);
+      console.log('2');
+      if(err) return res.status(500).json(err);
+
+      return res.json(s);
     })
   },
   getProjects: function(req, res, next){
@@ -65,6 +70,14 @@ module.exports = {
           return res.json(project);
         })
       }
+    })
+  },
+  getTasks: function(req, res, next){
+    Task.find({})
+      .exec(function(err, s){
+        // console.log(s);
+        if(err) return res.status(500).json(err);
+        return res.json(s);
     })
   }
 }

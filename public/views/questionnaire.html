@@ -4,37 +4,37 @@
   </div>
   <div class="question">
     <h3>1.  What's your name?</h3>
-    <input type="text" autofocus>
+    <input ng-model="contactName" type="text" autofocus>
   </div>
   <div class="question">
     <h3>2.  What's your email address?</h3>
-    <input type="text">
+    <input ng-model="contactEmail" type="text">
   </div>
   <div class="question">
     <h3>3.  What's your phone number?</h3>
-    <input type="text">
+    <input ng-model="contactPhone" type="text">
   </div>
   <div class="question">
     <h3>4.  What company/organization do you represent?</h3>
-    <input type="text">
+    <input ng-model="contactRole" type="text">
   </div>
   <div class="question">
     <h3>5.  What role do you fill in this organization?</h3>
-    <input type="text">
+    <input ng-model="company" type="text">
   </div>
   <div class="question">
     <h3>6.  Where can we find your organization online? (website, social media, etc)</h3>
-    <input type="text">
+    <input ng-model="companyURLs" type="text">
   </div>
   <div class="question">
     <h3>7.  Please describe in a couple sentences what you would like AllenBros to do for you</h3>
-    <input type="text"></input>
+    <input ng-model="projectDescription" type="text"></input>
   </div>
   <div class="question">
     <h3>8.  When would you like this project to be finished? (leave blank if you have no specific time range in mind)</h3>
-    <input type="text">
+    <input ng-model="goalDate" type="date">
   </div>
-  <div class="submit-project-button" ng-click="newSubmission()">
+  <div class="submit-project-button" ng-click="newSubmission(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate)">
     <p>
       SUBMIT PROJECT
     </p>

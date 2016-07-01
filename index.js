@@ -56,13 +56,16 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', {
   successRedirect: '/#/admin',
   failureRedirect: '/#/login'
-}))
+}));
+
 
 app.post('/api/projects', projectCtrl.addProject);
 app.get('/api/projects', requireAuth, projectCtrl.getProjects);
 app.get('/api/projects/:id', projectCtrl.getProjectById);
 app.delete('/api/projects/:id', projectCtrl.deleteProjectById);
 app.put('/api/projects/:id', projectCtrl.updateProjectById);
+
+app.get('/api/tasks', projectCtrl.getTasks);
 
 
 

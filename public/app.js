@@ -11,6 +11,9 @@ angular.module('app', ['ui.router'])
     resolve: {
       projects: function(projectService){
         return projectService.getProjects();
+      },
+      admins: function(projectService){
+        return projectService.getAdmins();
       }
     }
   })

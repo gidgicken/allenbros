@@ -1,9 +1,46 @@
 angular.module('app').service('projectService', function($http){
 
-  this.newSubmission = function(){
-    
+  this.newSubmission = function(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate){
+    var projectName = company;
+    var projectOwner = contactName;
+    var approvalStatus = 'pending';
+    var newProject = {
+      "questionnaire": {
+        "contactName": contactName,
+        "contactEmail": contactEmail,
+        "contactPhone": contactPhone,
+        "contactRole": contactRole,
+        "company": company,
+        "companyURLs": companyURLs,
+        "projectDescription": projectDescription,
+        "goalDate": goalDate
+      },
+      "information": {
+        "projectName": projectName,
+        "projectOwner": contactName,
+        "approvalStatus": approvalStatus
+      }
+    }
+    return $http.post('/api/projects', newProject).then(function(){
+      //location.reload(); //Project succesfully added
+      console.log('successfully added to database');
+    }, function(){
+      console.log('Invalid Project Submission'); //Something wrong with submission
+    });
   }
 
+  this.getAdmins = function(){
+    return $http({
+      method: "GET",
+      url: "/api/tasks"
+    }).then(function(data){
+      var adminsArr = [];
+      for(var i = 0; i < data.data.length; i++){
+        if(adminsArr.indexOf(data.data[i].assignedTo) === -1) adminsArr.push(data.data[i].assignedTo);
+      }
+      return adminsArr;
+    })
+  }
 
   this.getProjects = function(){
     return $http({
@@ -31,13 +68,15 @@ angular.module('app').service('projectService', function($http){
       },
       "information": {
         "projectName": projectName,
-        "projectOwner": contactName
+        "projectOwner": contactName,
+        "approvalStatus": "approved"
       }
     }
     return $http.post('/api/projects', newProject).then(function(){
-      location.reload(); //Project succesfully added
+      //location.reload(); //Project succesfully added
+      console.log('successfully added to database');
     }, function(){
-      alert('Invalid Project Submission'); //Something wrong with submission
+      console.log('Invalid Project Submission'); //Something wrong with submission
     });
   }
 
