@@ -8,8 +8,8 @@ var taskSchema = new Schema({
     type: String,
     enum: [
       'new',
-      'in progress',
-      'complete'
+      'complete',
+      'deleted'
     ],
     default: 'new' },
   text: { type: String, required: true }

@@ -1,5 +1,26 @@
+<label><input type="checkbox" ng-model="showCompleted">Completed</label>
+<label><input type="checkbox" ng-model="showDeleted">Deleted</label>
+
 <ul>
-  <li ng-repeat="task in selectedProject.tasks">{{task.text}}</li>
+  <li ng-repeat="task in selectedProject.tasks | filter: {status: 'new'}">{{task.text}}
+    <button type="button" ng-click="markTaskAsDeleted(task._id, selectedProject._id)" name="button">delete</button>
+    <button type="button" ng-click="markTaskAsCompleted(task._id, selectedProject._id)" name="button">complete</button>
+    {{task.status}}
+  </li>
+</ul>
+<ul>
+  <li ng-show="showCompleted" ng-repeat="task in selectedProject.tasks | filter: {status: 'complete'}">{{task.text}}
+    <button type="button" ng-click="markTaskAsDeleted(task._id, selectedProject._id)" name="button">delete</button>
+    <button type="button" ng-click="markTaskAsNew(task._id, selectedProject._id)" name="button">new</button>
+    {{task.status}}
+  </li>
+</ul>
+<ul>
+  <li ng-show="showDeleted" ng-repeat="task in selectedProject.tasks | filter: {status: 'deleted'}">{{task.text}}
+    <button type="button" ng-click="markTaskAsNew(task._id, selectedProject._id)" name="button">new</button>
+    <button type="button" ng-click="markTaskAsCompleted(task._id, selectedProject._id)" name="button">complete</button>
+    {{task.status}}
+  </li>
 </ul>
 <input style="color: black" name="name" ng-model="task" placeholder="task...">
 <h5 ng-click="addTask(selectedProject._id, task)">+ Add Task</h5>

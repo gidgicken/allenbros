@@ -67,6 +67,8 @@ app.put('/api/projects/:id', projectCtrl.updateProjectById);
 
 app.get('/api/tasks', projectCtrl.getTasks);
 
+app.patch('/api/tasks/:id', projectCtrl.patchTaskById);
+
 
 
 

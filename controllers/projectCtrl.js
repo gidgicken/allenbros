@@ -79,5 +79,11 @@ module.exports = {
         if(err) return res.status(500).json(err);
         return res.json(s);
     })
+  },
+  patchTaskById: function(req, res, next){
+    Task.findByIdAndUpdate(req.params.id, req.body, function(err, s){
+      if(err) return res.status(500).json(err);
+      return res.json(s);
+    })
   }
 }

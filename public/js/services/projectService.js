@@ -62,6 +62,18 @@ angular.module('app').service('projectService', function($http, $q){
       return;
     })
   }
+
+  this.customTaskFilter = function(task){
+    var showStatus = [];
+    for(var i = 0; i < task_show_or_hide.length; i++){
+      if(task_show_or_hide[i].show) showStatus.push(task_show_or_hide[i]);
+    }
+    if(showStatus.indexOf(task.status) != -1){
+      return true;
+    }
+    return false;
+  }
+
   this.addProject = function(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate, projectName, projectOwner){
     var newProject = {
       "questionnaire": {
@@ -94,16 +106,60 @@ angular.module('app').service('projectService', function($http, $q){
         "text": task
       }
     }
-    // return $http.put('/api/projects/' + id, newTask).then(function(response){
-    //
-    // }, function(){
-    //   alert('Invalid Task Submission'); //Something wrong with task submission
-    // });
 
     return $http.put('/api/projects/' + id, newTask).then(function(response){
       return response.data;
     }, function(){
       alert('Invalid Task Submission');
     })
+  }
+
+  this.markTaskAsDeleted = function(task_id, project_id){
+    return $http.patch('/api/tasks/' + task_id, {"status": "deleted"}).then(function(){
+      return;
+    }, function(){
+      alert('Task could not be deleted');
+    })
+  }
+  this.markTaskAsCompleted = function(task_id, project_id){
+    return $http.patch('/api/tasks/' + task_id, {"status": "complete"}).then(function(){
+      return;
+    }, function(){
+      alert('Task could not be marked complete');
+    })
+  }
+  this.markTaskAsNew = function(task_id, project_id){
+    return $http.patch('/api/tasks/' + task_id, {"status": "new"}).then(function(){
+      return;
+    }, function(){
+      alert('Task could not be marked new');
+    })
+  }
+
+  var task_show_or_hide = [
+    {
+      status: "new",
+      show: true
+    },
+    {
+      status: "complete",
+      show: false
+    },
+    {
+      status: "deleted",
+      show: false
+    }
+  ];
+  this.toggleNewTaskDisplay = function(){
+    if(task_show_or_hide[0].show) task_show_or_hide[0].show = false;
+    else task_show_or_hide[0].show = true;
+  }
+  this.toggleCompleteTaskDisplay = function(){
+    if(task_show_or_hide[1].show) task_show_or_hide[1].show = false;
+    else task_show_or_hide[1].show = true;
+  }
+  this.toggleDeletedTaskDisplay = function(){
+    if(task_show_or_hide[2].show) task_show_or_hide[2].show = false;
+    else task_show_or_hide[2].show = true;
   }
 })
