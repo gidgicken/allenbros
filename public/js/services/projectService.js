@@ -1,4 +1,4 @@
-angular.module('app').service('projectService', function($http){
+angular.module('app').service('projectService', function($http, $q){
 
   this.newSubmission = function(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate){
     var projectName = company;
@@ -54,6 +54,14 @@ angular.module('app').service('projectService', function($http){
       return data;
     })
   }
+  this.getProject = function(id){
+    return $http.get('/api/projects/' + id).then(function(result){
+      return result.data;
+    }, function(){
+      console.log('Invalid GET project');
+      return;
+    })
+  }
   this.addProject = function(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate, projectName, projectOwner){
     var newProject = {
       "questionnaire": {
@@ -86,10 +94,16 @@ angular.module('app').service('projectService', function($http){
         "text": task
       }
     }
-    $http.put('/api/projects/' + id, newTask).then(function(){
-      location.reload(); //Task succesfully added
+    // return $http.put('/api/projects/' + id, newTask).then(function(response){
+    //
+    // }, function(){
+    //   alert('Invalid Task Submission'); //Something wrong with task submission
+    // });
+
+    return $http.put('/api/projects/' + id, newTask).then(function(response){
+      return response.data;
     }, function(){
-      alert('Invalid Task Submission'); //Something wrong with task submission
-    });
+      alert('Invalid Task Submission');
+    })
   }
 })

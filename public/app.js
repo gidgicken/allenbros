@@ -8,6 +8,7 @@ angular.module('app', ['ui.router'])
     url: '/admin',
     templateUrl: './views/admin.html',
     controller: 'adminCtrl',
+    controllerAs: 'c',
     resolve: {
       projects: function(projectService){
         return projectService.getProjects();
@@ -16,6 +17,10 @@ angular.module('app', ['ui.router'])
         return projectService.getAdmins();
       }
     }
+  })
+  .state('admin.project', {
+    url: '/project',
+    templateUrl: "./views/admin.project.html"
   })
   .state('login', {
     url: '/login',

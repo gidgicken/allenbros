@@ -1,0 +1,5 @@
+<ul>
+  <li ng-repeat="task in selectedProject.tasks">{{task.text}}</li>
+</ul>
+<input style="color: black" name="name" ng-model="task" placeholder="task...">
+<h5 ng-click="addTask(selectedProject._id, task)">+ Add Task</h5>

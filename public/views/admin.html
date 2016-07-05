@@ -7,40 +7,46 @@
     <div class="white-settings-button"></div>
   </div>
 </div>
-
-
 <div class="admin-bottom-section">
-
 
 <div class="project-manager">
   <div class="sidebar-nav">
     <div class="admin-list">
+      <h5 class="projects-header">Tasks</h5>
       <div class="admin" ng-repeat="admin in admins">
-        <img src="" alt="" />
-        <h3>{{admin}}</h3>
+        <div class="anon-prof-pic">
+          <img src="../img/default-profile.png" alt="" />
+        </div>
+        <h3>{{admin}} Tasks</h3>
       </div>
     </div>
     <div class="projects-list">
       <h5 class="projects-header">Projects</h5>
-      <div ng-repeat="project in projects" class="project">
-      <h4>{{project.projectName}}</h4>
+      <div ng-repeat="project in projects" class="project" ng-click="updateSelectedProject(project)" ui-sref="admin.project">
+        <div class="grey-folder-pic">
+          <img src="../img/grey-folder.png" alt="" />
+        </div>
+          <h4>{{project.projectName}}</h4>
       </div>
     </div>
     <div class="new-project-link">
-      <div class="plus-sign"></div>
-      <h5>Add Project</h5>
+      <!-- <div class="black-cross"></div> -->
+      <h5> + Add Project</h5>
     </div>
+
   </div>
   <div class="project-viewer">
-    <div class="project-viewer-header">
+    <ui-view></ui-view>
+    <!-- <div class="project-viewer-header">
       <div class="project-viewer-header-left">
-        <h2>Project Name</h2>
+        <h2>{{test}}</h2>
         <h6>Company Name</h6>
       </div>
       <select class="task-type-selector" name="">
 
       </select>
     </div>
+
     <div class="project-viewer-task">
       <div class="checkoff-circle"></div>
       <h3>Task text</h3>
@@ -50,11 +56,12 @@
     <div class="new-class-link">
       <div class="plus-sign"></div>
       <h5>Add Task</h5>
-    </div>
+
+    </div> -->
   </div>
 </div>
-
 </div>
+
 <!-- <h3>PROJECTS</h3>
 <ul>
   <li ng-repeat="project in projects">{{project.projectName}}
