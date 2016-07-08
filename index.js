@@ -61,7 +61,7 @@ var requireAuth = function(req, res, next) {
 passport.use(new GitHubStrategy({
   clientID: '6c808f44be286cc277b0',
   clientSecret: '8d0b741bb7630518369cf581310eed11af25ee6f',
-  callbackURL: 'http://localhost:3000/auth/github/callback'
+  callbackURL: 'https://allenbros.herokuapp.com/auth/github/callback'
 }, function(token, refreshToken, profile, done) {
   return done(null, profile)
 }));

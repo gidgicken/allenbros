@@ -69,7 +69,7 @@ angular.module('app').service('projectService', function($http, $q, $state){
       url: "/api/projects"
     }).then(function(data){
       if(typeof data.data.redirect == "string") {
-        window.location = "http://localhost:3000" + data.data.redirect;
+        window.location = "https://allenbros.herokuapp.com" + data.data.redirect;
         return;
       }
       return data;

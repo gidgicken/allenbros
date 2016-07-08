@@ -24,7 +24,7 @@ var mailOptions = {
     from: '"AllenBros" <bros.allen@gmail.com>', // sender address
     to: 'doydle@gmail.com', // list of receivers
     subject: 'New Project Submission', // Subject line
-    html: '<p>A new project has been submitted to Allen Bros</p><br> <a href="localhost:3000/#/admin">Click here to view</a>', // plaintext body
+    html: '<p>A new project has been submitted to Allen Bros</p><br>">Click here to view</a>', // plaintext body
 };
 
 module.exports = {
