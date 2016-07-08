@@ -105,6 +105,7 @@ app.put('/api/projects/:id', projectCtrl.updateProjectById);
 
 app.get('/api/tasks', projectCtrl.getTasks);
 app.patch('/api/tasks/:id', projectCtrl.patchTaskById);
+app.delete('/api/tasks/:id', projectCtrl.deleteTaskById);
 
 app.get('/api/admins', projectCtrl.getAdmins);
 app.post('/api/admins', projectCtrl.addAdmin);

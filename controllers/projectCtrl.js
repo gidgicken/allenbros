@@ -157,6 +157,12 @@ module.exports = {
       return res.json(s);
     })
   },
+  deleteTaskById: function(req,res,next) {
+    Task.findByIdAndRemove({'_id': req.params.id}).exec(function(err, s){
+      if(err) return res.status(500).json(err);
+      return res.json(s);
+    })
+  },
   getAdmins: function(req,res,next){
     Admin.find().exec(function(err, s){
       if(err) return res.status(500).json(err);

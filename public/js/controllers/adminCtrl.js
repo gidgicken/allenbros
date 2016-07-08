@@ -16,6 +16,16 @@ angular.module('app').controller('adminCtrl', function($scope, projects, admins,
       })
     })
   }
+  $scope.deleteProject = function(project){
+    projectService.deleteProject(project).then(function(){
+      projectService.getProjects().then(function(s){
+        $scope.projects = s.data;
+      })
+      projectService.getTasks().then(function(result){
+        $scope.tasks = result;
+      })
+    });
+  }
   $scope.addTask = function(id, text, assignee){
     projectService.addTask(id, text, assignee).then(function(result){
       projectService.getProject(result._id).then(function(s){

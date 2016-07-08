@@ -46,11 +46,18 @@
     </div>
     <div class="projects-list">
       <h5 class="projects-header">Projects</h5>
-      <div ng-repeat="project in projects" class="project" ng-click="updateSelectedProject(project)" ui-sref="admin.project">
-        <div class="grey-folder-pic">
-          <img src="../img/grey-folder.png" alt="" />
+      <div ng-repeat="project in projects" class="project">
+        <div class="project-tab-top">
+          <div class="grey-folder-pic" ng-click="updateSelectedProject(project)" ui-sref="admin.project">
+            <img src="../img/grey-folder.png" alt="" />
+          </div>
+            <h4 ng-click="updateSelectedProject(project)" ui-sref="admin.project">{{project.projectName}}</h4>
+            <label style="color: #cccccc; font-size: 12px;"><input class="edit-task-link" type="checkbox" ng-model="editProject">x</label>
         </div>
-          <h4>{{project.projectName}}</h4>
+        <div class="project-tab-bottom" ng-show="editProject">
+          <h5 style="font-weight: 300;">Delete this project?</h5>
+          <button type="button" ng-click="deleteProject(project)" name="button">Yes</button>
+        </div>
       </div>
     </div>
     <div class="new-project-link">

@@ -120,6 +120,18 @@ angular.module('app').service('projectService', function($http, $q, $state){
       console.log('Invalid Project Submission'); //Something wrong with submission
     });
   }
+
+  this.deleteProject = function(project){
+    if(project.tasks){
+      for(var i = 0; i < project.tasks.length; i++){
+        $http.delete('/api/tasks/' + project.tasks[i]._id);
+      }
+    }
+    return $http.delete('/api/projects/' + project._id).then(function(result){
+      return result.data;
+    })
+  }
+
   this.getTasks = function(){
     return $http.get('/api/tasks').then(function(result){
       return result.data;
