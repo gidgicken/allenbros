@@ -38,6 +38,40 @@
   top: 9px;
   width: 20px;
 }
+.add-dropdown-menu {
+  width: 150px;
+  border: 1px #cccccc solid;
+  box-shadow: 1px 1px 3px #cccccc;
+  position: absolute;
+  background: white;
+  z-index: 10000;
+  top: 25px;
+}
+.add-admin-form input {
+  border: 1px solid #cccccc;
+  color: black;
+  font-size: 14px;
+  padding: 2px;
+  letter-spacing: normal;
+  width: 70%;
+}
+.dropdown-option {
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Merriweather', sans-serif;
+  display: flex;
+  align-items: center;
+  /*margin-left: 5px;*/
+  position: relative;
+}
+.dropdown-option h4 {
+  font-weight: 300;
+  font-size: 12px;
+}
+.dropdown-option:hover {
+  background: #cccccc;
+}
 .black-cross {
   background: black;
   height: 20px;
@@ -81,7 +115,7 @@
   justify-content: center;
 }
 .sidebar-nav {
-  width: 16vw;
+  width: 20vw;
   height: 100%;
 }
 .admin-list {
@@ -121,9 +155,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 100%;
   height: 30px;
   padding-left: 30px;
+  overflow: hidden;
 }
 .grey-folder-pic {
   height: 20px;
@@ -140,9 +175,33 @@
 }
 .new-project-link {
   display: flex;
-  justify-content: space-aro;
   height: 40px;
   align-items: center;
+  position: relative;
+}
+.new-project-form {
+  width: 30vw;
+  height: 300px;
+  background: white;
+  z-index: 10000;
+  position: absolute;
+  overflow: scroll;
+  border: 1px #cccccc solid;
+  box-shadow: 1px 1px 2px #cccccc;
+  padding: 5px;
+}
+.new-project-form h3 {
+  font-weight: 300;
+  font-size: 14px;
+}
+.new-project-form input {
+  border: 1px solid #cccccc;
+  color: black;
+  font-size: 14px;
+  padding: 2px;
+  letter-spacing: normal;
+  width: 90%;
+
 }
 .project-viewer {
   background: white;
@@ -152,7 +211,7 @@
   height: 100%;
   padding: 50px 3vw 0 5vw;;
 }
-.project-viewer-header {
+/*.project-viewer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -169,4 +228,120 @@
   color: #cccccc;
   font-size: 12px;
   font-weight: 300;
+}*/
+.project-viewer-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.project-viewer-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  width: 100%;
+  height:40px;
+  margin-bottom: 10px;
+}
+.project-viewer-header-top-left {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+.project-viewer-header-top-left h2 {
+  font-weight:300;
+}
+.project-viewer-header-top-left label {
+  font-size: 12px;
+  color: #cccccc;
+}
+.project-viewer-header-top-left input {
+  opacity: 0;
+}
+.project-viewer-header-top-right {
+  font-size: 12px;
+  color: #cccccc;
+}
+.project-viewer-header-bottom {
+  margin-bottom: 10px;
+}
+.project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-info h6 {
+  margin: 4px 0 0 0;
+  font-weight: 300;
+}
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px #f2f2f2 solid;
+  margin-left: -60px;
+}
+.task-top {
+  height: 40px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-top-left {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+}
+.task-top-right {
+  font-size: 10px;
+  color: #cccccc;
+}
+.task-bottom {
+  height: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #cccccc;
+}
+.edit-task-link {
+  opacity: 0;
+}
+.mark-complete-circle {
+  height: 20px;
+  width: 20px;
+  -moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+  border: 1px #cccccc solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.mark-complete-circle:hover {
+  cursor: pointer;
+  background: #cccccc;
+}
+.completed-circle {
+  height: 20px;
+  width: 20px;
+  -moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+  border: 1px #cccccc solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  background: #cccccc;
+}
+.completed-circle:hover {
+  cursor: pointer;
+  background: white;
+}
+#deleted-task {
+  text-decoration: line-through;
 }

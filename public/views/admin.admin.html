@@ -1,0 +1,33 @@
+<!-- <ul>
+  <li ng-repeat="task in tasks | filter:{assignedTo: selectedAdmin._id}">{{task.text}}</li>
+</ul> -->
+<div class="admin-project-label" ng-repeat="project in projects">
+  <h3 style="font-weight: 300">{{project.projectName}}</h3>
+  <div class="task" ng-repeat="task in project.tasks | filter: assignedToFilter | filter: {status: 'new'}">
+    <div class="task-top">
+      <div class="task-top-left">
+        <div class="mark-complete-circle" ng-click="markTaskAsCompleted(task._id, project._id)"></div>
+        {{task.text}}
+      </div>
+      <div class="task-top-right">
+        {{task.assignedTo.firstName}}
+        <label><input class="edit-task-link" type="checkbox" ng-model="editTask">Delete</label>
+      </div>
+    </div>
+    <div class="task-bottom" ng-show="editTask">
+      <h5>Are you sure you want to delete this task?</h5>
+      <button type="button" ng-click="markTaskAsDeleted(task._id, project._id)" name="button">Yes, delete</button>
+    </div>
+  </div>
+
+  <label style="font-size: 12px; font-weight: 700;"><input style="margin-top: 10px;" class="edit-task-link" type="checkbox" ng-model="showTaskFields">+ Add Task</label>
+
+  <div ng-show="showTaskFields" class="add-task-fields">
+    <input style="color: black" name="name" ng-model="taskText" placeholder="task...">
+    <select ng-model="assignee">
+      <option value="" selected>Unassigned</option>
+      <option ng-repeat="admin in admins" value="{{admin._id}}">{{admin.firstName}}</option>
+    </select>
+    <button type="button" ng-click="addTask(project._id, taskText, assignee)">Add</button>
+  </div>
+</div>

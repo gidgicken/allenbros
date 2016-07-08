@@ -1,26 +1,94 @@
-<label><input type="checkbox" ng-model="showCompleted">Completed</label>
-<label><input type="checkbox" ng-model="showDeleted">Deleted</label>
+<div class="project-viewer-header">
+  <div class="project-viewer-header-top">
+    <div class="project-viewer-header-top-left">
+      <h2>{{selectedProject.projectName}}</h2>
+      <label><input class="project-info-link" type="checkbox" ng-model="showProjectInfo">More Info...</label>
+    </div>
+    <div class="project-viewer-header-top-right">
+      <label><input type="checkbox" ng-model="showCompleted">Completed</label>
+      <label><input type="checkbox" ng-model="showDeleted">Deleted</label>
+    </div>
+  </div>
+  <div class="project-viewer-header-bottom">
+    <div class="project-info" ng-show="showProjectInfo">
+      <h6>Contact Name: {{selectedProject.projectQuestionnaire.contactName}}</h6>
+      <h6>Contact Email Address: {{selectedProject.projectQuestionnaire.contactEmail}}</h6>
+      <h6>Contact Phone: {{selectedProject.projectQuestionnaire.contactPhone}}</h6>
+      <h6>Contact Role: {{selectedProject.projectQuestionnaire.contactRole}}</h6>
+      <h6>Company URL(s): {{selectedProject.projectQuestionnaire.companyURLs}}</h6>
+      <h6>Project Description: {{selectedProject.projectQuestionnaire.projectDescription}}</h6>
+      <h6>Goal Completion Date: {{selectedProject.projectQuestionnaire.goalDate}}</h6>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li ng-repeat="task in selectedProject.tasks | filter: {status: 'new'}">{{task.text}}
-    <button type="button" ng-click="markTaskAsDeleted(task._id, selectedProject._id)" name="button">delete</button>
-    <button type="button" ng-click="markTaskAsCompleted(task._id, selectedProject._id)" name="button">complete</button>
-    {{task.status}}
+<!-- <ul> -->
+<!-- <li ng-repeat="admin in admins">
+  {{admin.firstName}} -->
+  <li class="task" ng-repeat="task in selectedProject.tasks | filter: {status: 'new'}">
+    <div class="task-top">
+      <div class="task-top-left">
+        <div class="mark-complete-circle" ng-click="markTaskAsCompleted(task._id, selectedProject._id)"></div>
+        {{task.text}}
+      </div>
+      <div class="task-top-right">
+        {{task.assignedTo.firstName}}
+        <label><input class="edit-task-link" type="checkbox" ng-model="editTask">Delete</label>
+      </div>
+    </div>
+    <div class="task-bottom" ng-show="editTask">
+      <h5>Are you sure you want to delete this task?</h5>
+      <button type="button" ng-click="markTaskAsDeleted(task._id, selectedProject._id)" name="button">Yes, delete</button>
+    </div>
   </li>
-</ul>
-<ul>
-  <li ng-show="showCompleted" ng-repeat="task in selectedProject.tasks | filter: {status: 'complete'}">{{task.text}}
-    <button type="button" ng-click="markTaskAsDeleted(task._id, selectedProject._id)" name="button">delete</button>
-    <button type="button" ng-click="markTaskAsNew(task._id, selectedProject._id)" name="button">new</button>
-    {{task.status}}
+<!-- </li> -->
+<!-- </ul> -->
+<!-- <ul> -->
+<div style="margin-top: 40px;" ng-show="showCompleted">
+  <h6 style="margin-bottom: 0px">Complete</h6>
+  <li class="task" ng-repeat="task in selectedProject.tasks | filter: {status: 'complete'}">
+    <div class="task-top">
+      <div class="task-top-left">
+        <div class="completed-circle" ng-click="markTaskAsNew(task._id, selectedProject._id)"></div>
+        {{task.text}}
+      </div>
+      <div class="task-top-right">
+        {{task.assignedTo.firstName}}
+        <p ng-click="markTaskAsNew(task._id, selectedProject._id)">
+          Mark as new
+        </p>
+      </div>
+    </div>
   </li>
-</ul>
-<ul>
-  <li ng-show="showDeleted" ng-repeat="task in selectedProject.tasks | filter: {status: 'deleted'}">{{task.text}}
-    <button type="button" ng-click="markTaskAsNew(task._id, selectedProject._id)" name="button">new</button>
-    <button type="button" ng-click="markTaskAsCompleted(task._id, selectedProject._id)" name="button">complete</button>
-    {{task.status}}
+</div>
+<!-- </ul>
+<ul> -->
+<div style="margin-top: 40px;" ng-show="showDeleted">
+  <h6 style="margin-bottom:0px;">Deleted</h6>
+  <li class="task" ng-show="showDeleted" ng-repeat="task in selectedProject.tasks | filter: {status: 'deleted'}">
+    <div class="task-top">
+      <div class="task-top-left" id="deleted-task">
+        <div class="completed-circle" ng-click="markTaskAsNew(task._id, selectedProject._id)"></div>
+        {{task.text}}
+      </div>
+      <div class="task-top-right">
+        {{task.assignedTo.firstName}}
+        <p ng-click="markTaskAsNew(task._id, selectedProject._id)">
+          Mark as new
+        </p>
+      </div>
+    </div>
   </li>
-</ul>
-<input style="color: black" name="name" ng-model="task" placeholder="task...">
-<h5 ng-click="addTask(selectedProject._id, task)">+ Add Task</h5>
+</div>
+<!-- </ul> -->
+
+<label style="font-size: 12px; font-weight: 700;"><input style="margin-top: 10px;" class="edit-task-link" type="checkbox" ng-model="showTaskFields">+ Add Task</label>
+
+<div ng-show="showTaskFields" class="add-task-fields">
+  <input style="color: black" name="name" ng-model="task" placeholder="task...">
+  <select ng-model="assignee">
+    <option value="" selected>Unassigned</option>
+    <option ng-repeat="admin in admins" value="{{admin._id}}">{{admin.firstName}}</option>
+  </select>
+  <button type="button" ng-click="addTask(selectedProject._id, task, assignee)">Add</button>
+</div>

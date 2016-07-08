@@ -3,17 +3,47 @@ var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+// var nodemailer = require('nodemailer');
+//
+// var smtpConfig = {
+//     host: 'smtp.gmail.com',
+//     port: 465,
+//     secure: true, // use SSL
+//     auth: {
+//         user: 'bros.allen@gmail.com',
+//         pass: 'brothersallen'
+//     }
+// };
+//
+// var transporter = nodemailer.createTransport(smtpConfig);
+//
+// var mailOptions = {
+//     from: '"AllenBros" <bros.allen@gmail.com>', // sender address
+//     to: 'doydle@gmail.com', // list of receivers
+//     subject: 'New Project Submission', // Subject line
+//     text: 'A new project has been submitted to Allen Bros', // plaintext body
+// };
+//
+// transporter.sendMail(mailOptions, function(error, info){
+//     if(error){
+//         return console.log(error);
+//     }
+//     console.log('Message sent: ' + info.response);
+// });
 
 var GitHubStrategy = require('passport-github').Strategy;
 
 var Project = require('./models/project.js');
 var Questionnaire = require('./models/questionnaire.js');
 var Task = require('./models/task.js');
+var Admin = require('./models/admin.js')
+
 
 var projectCtrl = require('./controllers/projectCtrl.js');
 
 mongoose.connect('mongodb://localhost/allenbros');
+
+var adminsArr = ['gidgicken', 'caleb-allen']; //THIS SUCKS. CHANGE WHEN YOU CAN
 
 var app = express();
 
@@ -37,12 +67,20 @@ passport.deserializeUser(function(obj, done) {
 
 var requireAuth = function(req, res, next) {
     if (req.isAuthenticated()) {
-      console.log('USER IS AUTHENTICATED')
-      return next();
+      console.log('START START START START START START')
+      console.log(req.user.username);
+      if(adminsArr.indexOf(req.user.username) != -1) return next();
     }
-    console.log('USER IS NOT AUTHENTICATED')
+    console.log('USER IS NOT ADMIN')
     return res.send({redirect: '/#/login'})
 }
+
+// var requireABAuth = function(req,res,next){
+//   console.log('here');
+//   var adminsArr = projectCtrl.getAdminsGithubUN(req,res,next);
+//   console.log('Hello');
+//   return next();
+// }
 
 passport.use(new GitHubStrategy({
   clientID: '6c808f44be286cc277b0',
@@ -66,8 +104,10 @@ app.delete('/api/projects/:id', projectCtrl.deleteProjectById);
 app.put('/api/projects/:id', projectCtrl.updateProjectById);
 
 app.get('/api/tasks', projectCtrl.getTasks);
-
 app.patch('/api/tasks/:id', projectCtrl.patchTaskById);
+
+app.get('/api/admins', projectCtrl.getAdmins);
+app.post('/api/admins', projectCtrl.addAdmin);
 
 
 

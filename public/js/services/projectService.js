@@ -1,6 +1,11 @@
-angular.module('app').service('projectService', function($http, $q){
+angular.module('app').service('projectService', function($http, $q, $state){
 
   this.newSubmission = function(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate){
+    if(!contactName || !contactEmail || !company){
+      alert('Project not submitted. Please fill out all fields');
+      $state.go('main');
+      return;
+    }
     var projectName = company;
     var projectOwner = contactName;
     var approvalStatus = 'pending';
@@ -28,18 +33,34 @@ angular.module('app').service('projectService', function($http, $q){
       console.log('Invalid Project Submission'); //Something wrong with submission
     });
   }
-
-  this.getAdmins = function(){
-    return $http({
-      method: "GET",
-      url: "/api/tasks"
-    }).then(function(data){
-      var adminsArr = [];
-      for(var i = 0; i < data.data.length; i++){
-        if(adminsArr.indexOf(data.data[i].assignedTo) === -1) adminsArr.push(data.data[i].assignedTo);
-      }
-      return adminsArr;
+  this.addAdmin = function(firstName, lastName, githubUN){
+    var newAdmin = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "githubUN": githubUN
+    };
+    return $http.post('/api/admins', newAdmin).then(function(result){
+      return result;
+    }, function(){
+      console.log('Did not add new admin')
     })
+  }
+  this.getAdmins = function(){
+    return $http.get('/api/admins').then(function(result){
+      return result.data;
+    }, function(){
+      console.log('could not get admins');
+    })
+    // return $http({
+    //   method: "GET",
+    //   url: "/api/tasks"
+    // }).then(function(data){
+    //   var adminsArr = [];
+    //   for(var i = 0; i < data.data.length; i++){
+    //     if(adminsArr.indexOf(data.data[i].assignedTo) === -1) adminsArr.push(data.data[i].assignedTo);
+    //   }
+    //   return adminsArr;
+    // })
   }
 
   this.getProjects = function(){
@@ -99,11 +120,26 @@ angular.module('app').service('projectService', function($http, $q){
       console.log('Invalid Project Submission'); //Something wrong with submission
     });
   }
-
-  this.addTask = function(id, task){
-    var newTask = {
-      "task": {
-        "text": task
+  this.getTasks = function(){
+    return $http.get('/api/tasks').then(function(result){
+      return result.data;
+    }, function(){
+      console.log('could not get tasks');
+    })
+  }
+  this.addTask = function(id, task, assignee){
+    if(assignee){
+      var newTask = {
+        "task": {
+          "assignedTo": assignee,
+          "text": task
+        }
+      }
+    }else{
+      var newTask = {
+        "task": {
+          "text": task,
+        }
       }
     }
 
@@ -113,6 +149,10 @@ angular.module('app').service('projectService', function($http, $q){
       alert('Invalid Task Submission');
     })
   }
+
+  // this.updateTask = function(id, taskText, assignee){
+  //
+  // }
 
   this.markTaskAsDeleted = function(task_id, project_id){
     return $http.patch('/api/tasks/' + task_id, {"status": "deleted"}).then(function(){

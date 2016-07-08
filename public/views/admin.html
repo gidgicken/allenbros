@@ -3,7 +3,25 @@
     <div class="admin-logo"></div>
   </div>
   <div class="admin-header-right">
-    <div class="white-cross"></div>
+    <div style="height:20px; width:20px; display:flex; justify-content:center; position:relative" ng-click="toggleAddMenu()">
+      <div class="white-cross"></div>
+      <div class="add-dropdown-menu" ng-show="showAddMenu">
+        <div class="dropdown-option" ng-click='toggleProjectForm()'>
+          <h4> > Add Project</h4>
+        </div>
+        <div class="dropdown-option" ui-sref="admin.addAdmin">
+          <h4> > Add Admin</h4>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="add-dropdown-menu" ng-show="showAddMenu">
+      <div class="dropdown-option">
+        <h4 ng-click='toggleProjectForm()'>Add Project</h4>
+      </div>
+      <div class="dropdown-option">
+        <h4>Add Admin</h4>
+      </div>
+    </div> -->
     <div class="white-settings-button"></div>
   </div>
 </div>
@@ -13,11 +31,17 @@
   <div class="sidebar-nav">
     <div class="admin-list">
       <h5 class="projects-header">Tasks</h5>
-      <div class="admin" ng-repeat="admin in admins">
+      <div class="admin" ng-repeat="admin in admins" ng-click="updateSelectedAdmin(admin)" ui-sref="admin.admin">
         <div class="anon-prof-pic">
           <img src="../img/default-profile.png" alt="" />
         </div>
-        <h3>{{admin}} Tasks</h3>
+        <h3>{{admin.firstName}}</h3>
+      </div>
+      <div class="admin" ui-sref="admin.unassigned">
+        <div class="anon-prof-pic">
+          <img src="../img/default-profile.png" alt="" />
+        </div>
+        <h3>Unassigned</h3>
       </div>
     </div>
     <div class="projects-list">
@@ -31,9 +55,31 @@
     </div>
     <div class="new-project-link">
       <!-- <div class="black-cross"></div> -->
-      <h5> + Add Project</h5>
+      <h5 ng-click='toggleProjectForm()'> + Add Project</h5>
     </div>
-
+    <div class="new-project-form" ng-show='showProjectForm'>
+        <h3>1.  Company name?</h3>
+        <input ng-model="company" type="text" autofocus>
+        <h3>2.  Contact's name?</h3>
+        <input ng-model="contactName" type="text">
+        <h3>3.  Contact's email address?</h3>
+        <input ng-model="contactEmail" type="text">
+        <h3>4.  Contact's phone number?</h3>
+        <input ng-model="contactPhone" type="text">
+        <h3>5.  Contact's role at company?</h3>
+        <input ng-model="contactRole" type="text">
+        <h3>6.  Company URLs?</h3>
+        <input ng-model="companyURLs" type="text">
+        <h3>7.  Short project description</h3>
+        <input ng-model="projectDescription" type="text"></input>
+        <h3>8.  Goal completion date?</h3>
+        <input ng-model="goalDate" type="date">
+      <div class="submit-project-button" ng-click="addProject(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate)" ui-sref="admin.project">
+        <p>
+          SUBMIT PROJECT
+        </p>
+      </div>
+    </div>
   </div>
   <div class="project-viewer">
     <ui-view></ui-view>

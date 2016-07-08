@@ -15,12 +15,27 @@ angular.module('app', ['ui.router'])
       },
       admins: function(projectService){
         return projectService.getAdmins();
+      },
+      tasks: function(projectService){
+        return projectService.getTasks();
       }
     }
   })
   .state('admin.project', {
     url: '/project',
     templateUrl: "./views/admin.project.html"
+  })
+  .state('admin.admin', {
+    url: '/admin',
+    templateUrl: "./views/admin.admin.html"
+  })
+  .state('admin.unassigned', {
+    url: '/admin/unassigned',
+    templateUrl: "./views/admin.unassigned.html"
+  })
+  .state('admin.addAdmin', {
+    url: '/addadmin',
+    templateUrl: "./views/admin.addadmin.html"
   })
   .state('login', {
     url: '/login',
@@ -36,6 +51,10 @@ angular.module('app', ['ui.router'])
     url: '/questionnaire',
     templateUrl: './views/questionnaire.html',
     controller: 'questionnaireCtrl'
+  })
+  .state('thankyou', {
+    url: '/thankyou',
+    templateUrl: './views/thankyou.html'
   })
 
 

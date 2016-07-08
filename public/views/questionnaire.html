@@ -16,11 +16,11 @@
   </div>
   <div class="question">
     <h3>4.  What company/organization do you represent?</h3>
-    <input ng-model="contactRole" type="text">
+    <input ng-model="company" type="text">
   </div>
   <div class="question">
     <h3>5.  What role do you fill in this organization?</h3>
-    <input ng-model="company" type="text">
+    <input ng-model="contactRole" type="text">
   </div>
   <div class="question">
     <h3>6.  Where can we find your organization online? (website, social media, etc)</h3>
@@ -34,7 +34,7 @@
     <h3>8.  When would you like this project to be finished? (leave blank if you have no specific time range in mind)</h3>
     <input ng-model="goalDate" type="date">
   </div>
-  <div class="submit-project-button" ng-click="newSubmission(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate)">
+  <div class="submit-project-button" ui-sref="thankyou" ng-click="newSubmission(contactName, contactEmail, contactPhone, contactRole, company, companyURLs, projectDescription, goalDate)">
     <p>
       SUBMIT PROJECT
     </p>
