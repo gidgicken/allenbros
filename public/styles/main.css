@@ -501,7 +501,7 @@ a:hover {
 }
 
 .contact-us-section {
-  height: 50vh;
+  height: 80vh;
   width: 106%;
   margin-left: -5vw;
   background: black;
@@ -511,7 +511,7 @@ a:hover {
   justify-content: space-around;
   color: white;
   font-family: 'Merriweather', 'sans-serif';
-
+  padding-bottom: 5vh;
 }
 .contact-us-columns {
   display: flex;
@@ -547,6 +547,7 @@ a:hover {
   color: #FFE300;
 }
 #click-here {
+  color:white;
   border-bottom: 4px solid #FFE300;
 }
 #click-here:hover {

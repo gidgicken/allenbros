@@ -3,33 +3,8 @@ var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// var nodemailer = require('nodemailer');
-//
-// var smtpConfig = {
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     secure: true, // use SSL
-//     auth: {
-//         user: 'bros.allen@gmail.com',
-//         pass: 'brothersallen'
-//     }
-// };
-//
-// var transporter = nodemailer.createTransport(smtpConfig);
-//
-// var mailOptions = {
-//     from: '"AllenBros" <bros.allen@gmail.com>', // sender address
-//     to: 'doydle@gmail.com', // list of receivers
-//     subject: 'New Project Submission', // Subject line
-//     text: 'A new project has been submitted to Allen Bros', // plaintext body
-// };
-//
-// transporter.sendMail(mailOptions, function(error, info){
-//     if(error){
-//         return console.log(error);
-//     }
-//     console.log('Message sent: ' + info.response);
-// });
+
+var config = require('./config.js');
 
 var GitHubStrategy = require('passport-github').Strategy;
 
@@ -41,7 +16,12 @@ var Admin = require('./models/admin.js')
 
 var projectCtrl = require('./controllers/projectCtrl.js');
 
-mongoose.connect('mongodb://localhost/allenbros');
+var port = config.PORT;
+var mongoURI = config.MONGO_URI;
+
+mongoose.connect(mongoURI)
+
+// mongoose.connect('mongodb://localhost/allenbros');
 
 var adminsArr = ['gidgicken', 'caleb-allen']; //THIS SUCKS. CHANGE WHEN YOU CAN
 
@@ -75,13 +55,6 @@ var requireAuth = function(req, res, next) {
     return res.send({redirect: '/#/login'})
 }
 
-// var requireABAuth = function(req,res,next){
-//   console.log('here');
-//   var adminsArr = projectCtrl.getAdminsGithubUN(req,res,next);
-//   console.log('Hello');
-//   return next();
-// }
-
 passport.use(new GitHubStrategy({
   clientID: '6c808f44be286cc277b0',
   clientSecret: '8d0b741bb7630518369cf581310eed11af25ee6f',
@@ -112,9 +85,6 @@ app.post('/api/admins', projectCtrl.addAdmin);
 
 
 
-
-
-var port = 3000;
 app.listen(port, function() {
   console.log("Started server on port", port);
 });
