@@ -24,7 +24,6 @@ mongoose.connection.once('open', function(){
   console.log('Connected to mongo at: ', mongoURI);
 })
 
-// mongoose.connect('mongodb://localhost/allenbros');
 
 var adminsArr = ['gidgicken', 'caleb-allen']; //THIS SUCKS. CHANGE WHEN YOU CAN
 
