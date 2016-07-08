@@ -19,7 +19,10 @@ var projectCtrl = require('./controllers/projectCtrl.js');
 var port = config.PORT;
 var mongoURI = config.MONGO_URI;
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI);
+mongoose.connection.once('open', function(){
+  console.log('Connected to mongo at: ', mongoURI);
+})
 
 // mongoose.connect('mongodb://localhost/allenbros');
 
