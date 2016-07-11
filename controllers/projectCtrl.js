@@ -93,31 +93,6 @@ module.exports = {
     })
   },
   updateProjectById: function(req, res, next){
-    // Project.findByIdAndUpdate(req.params.id, {})
-    // .populate('tasks')
-    // .populate('projectQuestionnaire')
-    // .exec(function(err, project){
-    //   console.log('1');
-    //   if(err) return res.status(500).json(err);
-    //   console.log('2');
-    //
-    //   if(req.body.task){
-    //     var newTask = new Task(req.body.task);
-    //     newTask.save(function(err){
-    //       console.log('3');
-    //       if(err) return res.status(500).json(err);
-    //     })
-    //     project.tasks.push(newTask._id);
-    //     project.save(function(err, s){
-    //       console.log('4');
-    //
-    //       if(err) return res.status(500).json(err);
-    //       console.log('5');
-    //
-    //       return res.json(project);
-    //     })
-    //   }
-    // })
     Project.findByIdAndUpdate(req.params.id, {}, function(err, project){
       console.log('1');
       if(err) return res.status(500).json(err);
@@ -145,14 +120,12 @@ module.exports = {
     Task.find({})
     .populate('assignedTo')
       .exec(function(err, s){
-        // console.log(s);
         if(err) return res.status(500).json(err);
         return res.json(s);
     })
   },
   patchTaskById: function(req, res, next){
     Task.findByIdAndUpdate(req.params.id, req.body, function(err, s){
-      console.log(req.body);
       if(err) return res.status(500).json(err);
       return res.json(s);
     })
@@ -176,11 +149,4 @@ module.exports = {
       return res.json(s);
     })
   }
-  // getAdminsGithubUN: function(req,res,next){
-  //   Admin.find().exec(function(err, s){
-  //     if(err) return [];
-  //     console.log(s);
-  //     return res.json(s);
-  //   })
-  // }
 }

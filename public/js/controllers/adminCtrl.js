@@ -38,19 +38,8 @@ angular.module('app').controller('adminCtrl', function($scope, projects, admins,
         })
       });
     });
-    // projectService.addTask(id, text, assignee).then(function(result){
-    //   // projectService.getProject(result._id).then(function(s){
-    //     $scope.selectedProject = result;
-    //   // });
-    // });
   }
-  // $scope.updateTask = function(id, taskText, assignee){
-  //   projectService.updateTask(id, taskText, assignee).then(function(result){
-  //     projectService.getProject(result._id).then(function(s){
-  //       $scope.selectedProject = s;
-  //     })
-  //   })
-  // }
+
   $scope.addAdmin = function(firstName, lastName, githubUN){
     projectService.addAdmin(firstName, lastName, githubUN).then(function(){
       projectService.getAdmins().then(function(s){
@@ -127,9 +116,4 @@ angular.module('app').controller('adminCtrl', function($scope, projects, admins,
     if($scope.showProjectForm)$scope.showProjectForm = false;
     if($scope.showAddMenu)$scope.showAddMenu = false;
   }
-  // $scope.toggleAddAdminForm = function(){
-  //   if($scope.showAddAdminForm) $scope.showAddAdminForm = false;
-  //   else $scope.showAddAdminForm = true;
-  //   return;
-  // }
 })
