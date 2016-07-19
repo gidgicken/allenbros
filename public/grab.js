@@ -5,7 +5,7 @@
 //   		var wa = document.createElement('script');
 //   		wa.type = 'text/javascript';
 //   		wa.async = true;
-//   		wa.src = './grab.js';
+//   		wa.src = 'INSERT_OUR_SCRIPT_URL_HERE.js';
 //   		var s = document.getElementsByTagName('script')[0];
 //   		s.parentNode.insertBefore(wa, s);
 //     </script>
