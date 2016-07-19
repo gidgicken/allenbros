@@ -16,16 +16,16 @@
 	var clicks = (function() {
 
 		var onClick = function(event) {
-			var clickObject = event;
+			var clickObject = {};
 			clickObject.currentState = document.getElementsByTagName('ui-view')[0].baseURI;
 			clickObject.__quix_site_id = window.__quix_site_id;
 			clickObject.targetElementId = assignElementId(event);
-			// clickObject.ctrlKey = event.ctrlKey;
-			// clickObject.altKey = event.altKey;
+			clickObject.ctrlKey = event.ctrlKey;
+			clickObject.altKey = event.altKey;
 			// clickObject.target = event.target;
-			// clickObject.timeStamp = event.timeStamp;
-			// clickObject.x = event.x;
-			// clickObject.y = event.y;
+			clickObject.timeStamp = event.timeStamp;
+			clickObject.x = event.x;
+			clickObject.y = event.y;
 			// clickObject.path = event.path;
 
 			console.dir(event);
