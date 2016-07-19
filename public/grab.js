@@ -23,7 +23,6 @@
 			clickObject.ctrlKey = event.ctrlKey;
 			clickObject.altKey = event.altKey;
 			clickObject.target = event.target;
-			clickObject.target = event.target;
 			clickObject.timeStamp = event.timeStamp;
 			clickObject.x = event.x;
 			clickObject.y = event.yx;
