@@ -46,7 +46,7 @@
 
 	document.addEventListener('click', clicks.onClick);
 
-	if (typeof(Storage) !== "undefined"{
+	if (typeof(Storage) !== "undefined"){
 		localStorage.setItem('sessionId', createSessionId())
 	})
 
