@@ -22,11 +22,11 @@
 			clickObject.targetElementId = assignElementId(event);
 			clickObject.ctrlKey = event.ctrlKey;
 			clickObject.altKey = event.altKey;
-			// clickObject.target = event.target;
+			clickObject.target = event.target;
 			clickObject.timeStamp = event.timeStamp;
 			clickObject.x = event.x;
 			clickObject.y = event.y;
-			// clickObject.path = event.path;
+			clickObject.path = event.path;
 
 			console.dir(event);
 			console.dir(clickObject);
