@@ -25,7 +25,7 @@
 			clickObject.target = event.target;
 			clickObject.timeStamp = event.timeStamp;
 			clickObject.x = event.x;
-			clickObject.y = event.yx;
+			clickObject.y = event.y;
 			clickObject.path = event.path;
 
 			console.dir(event);
