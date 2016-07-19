@@ -47,7 +47,8 @@
 	document.addEventListener('click', clicks.onClick);
 
 	if (typeof(Storage) !== "undefined"){
-		localStorage.setItem('sessionId', createSessionId())
+		var sessionId = Math.floor(Math.random() * 1000000);
+		localStorage.setItem('sessionId', sessionId);
 	}
 
 	/* axios v0.13.1 | (c) 2016 by Matt Zabriskie */
@@ -77,7 +78,3 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
-
-var createSessionId = function() {
-  return Math.floor(Math.random() * (1000000));
-}
