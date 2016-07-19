@@ -31,7 +31,7 @@
 			console.dir(event);
 			console.dir(clickObject);
 			var url = 'http://localhost:3000/api/';
-			axios.post(url + 'site', event)
+			axios.post(url + 'site', clickObject)
 				.then(function(response) {
 					console.log(response);
 				});
