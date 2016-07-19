@@ -32,7 +32,7 @@
 			}
 
 			var url = 'http://localhost:3000/api/';
-			axios.patch(url + 'site/' + '578eaaad516372ba37042957', clickObject)
+			axios.patch(url + 'site/' + '578eaaad516372ba37042957', clickInfo)
 				.then(function(response) {
 					console.log(response);
 				});
