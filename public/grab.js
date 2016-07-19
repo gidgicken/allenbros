@@ -22,7 +22,7 @@
 
 			console.dir(event);
 			var url = 'http://localhost:3000/api/';
-			axios.post(url + 'user', event)
+			axios.post(url + 'site', event)
 				.then(function(response) {
 					console.log(response);
 				});
