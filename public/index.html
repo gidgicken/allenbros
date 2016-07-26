@@ -10,19 +10,26 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,300' rel='stylesheet' type='text/css'>
     <title>Allen Brothers</title>
     <script>
-      (function(h,e,a,t,m,p) {
-      m=e.createElement(a);m.async=!0;m.src=t;
-      p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
-      })(window,document,'script','https://u.heatmap.it/log.js');
-    </script>
-    <script>
-    	window.__quix_site_id = 00000;
-  		var wa = document.createElement('script');
-  		wa.type = 'text/javascript';
-  		wa.async = true;
-  		wa.src = './grab.js';
-  		var s = document.getElementsByTagName('script')[0];
-  		s.parentNode.insertBefore(wa, s);
+      if(window.self === window.top){
+        window.qxid = '3755143';
+        var wa = document.createElement('script');
+        wa.type = 'text/javascript';
+        wa.async = true;
+        wa.src = './grab.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wa, s);
+      }
+
+      console.log(window);
+
+      window.addEventListener('message', function(event){
+        if(~event.origin.indexOf('http://localhost:3000')){
+          if(event.data.direction === "up") window.scrollTo(window.scrollX, window.scrollY - event.data.distance);
+          else if (event.data.direction === "down") window.scrollTo(window.scrollX, window.scrollY + event.data.distance);
+        } else { alert('broke');  }
+      });
+
+
     </script>
   </head>
   <body>
@@ -42,7 +49,7 @@
     <script src="./js/controllers/loginCtrl.js"></script>
     <script src="./js/controllers/questionnaireCtrl.js"></script>
     <script src="./js/controllers/mainCtrl.js"></script>
-    <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
+    <script src="//cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
 
   </body>
 </html>
