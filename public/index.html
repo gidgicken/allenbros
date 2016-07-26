@@ -9,6 +9,28 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,300' rel='stylesheet' type='text/css'>
     <title>Allen Brothers</title>
+    <script>
+      if(window.self === window.top){
+        window.qxid = '3755143';
+        var wa = document.createElement('script');
+        wa.type = 'text/javascript';
+        wa.async = true;
+        wa.src = './grab.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wa, s);
+      }
+
+      console.log(window);
+
+      window.addEventListener('message', function(event){
+        if(~event.origin.indexOf('http://localhost:3000')){
+          if(event.data.direction === "up") window.scrollTo(window.scrollX, window.scrollY - event.data.distance);
+          else if (event.data.direction === "down") window.scrollTo(window.scrollX, window.scrollY + event.data.distance);
+        } else { alert('broke');  }
+      });
+
+
+    </script>
   </head>
   <body>
     <ui-view></ui-view>
@@ -19,23 +41,15 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="./grab.js" charset="utf-8"></script>
-    
+    <!-- <script src="./grab.js" charset="utf-8"></script> -->
+
     <script src="app.js"></script>
     <script src="./js/controllers/adminCtrl.js"></script>
     <script src="./js/services/projectService.js"></script>
     <script src="./js/controllers/loginCtrl.js"></script>
     <script src="./js/controllers/questionnaireCtrl.js"></script>
     <script src="./js/controllers/mainCtrl.js"></script>
-    <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
-    <!-- <script type='text/javascript'>
-      window.__lo_site_id = 61457;
+    <script src="//cdn.jsdelivr.net/scrollreveal.js/3.1.4/scrollreveal.min.js"></script>
 
-      	(function() {
-      		var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
-      		wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
-      		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
-      	  })();
-  	</script> -->
   </body>
 </html>
